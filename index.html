@@ -1,4 +1,123 @@
-<p>This is a new git repo</p>
-<p>This is a new feature (dropdown)</p>
-<p>This is a new feature (button) </p>
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stock Exchange — Home</title>
+    <meta name="description" content="Live market overview, top movers, watchlist, and news." />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <div class="brand">
+          <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" class="brand-icon"><path fill="currentColor" d="M3 13h3v8H3zM8 3h3v18H8zM13 8h3v13h-3zM18 5h3v16h-3z"/></svg>
+          <span class="brand-name">Stock Exchange</span>
+        </div>
+
+        <nav class="main-nav" aria-label="Primary">
+          <ul>
+            <li><a href="#markets">Markets</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#learn">Learn</a></li>
+            <li><a href="#login">Login</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <form class="search" role="search" aria-label="Site wide">
+            <input id="site-search" name="q" type="search" placeholder="Search symbols, news..." autocomplete="off" />
+            <button type="submit" aria-label="Search">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79L20 21.49 21.49 20 15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </button>
+          </form>
+
+          <button id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">
+            <span class="toggle-icon" aria-hidden="true">🌙</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section class="ticker" aria-label="Live market ticker">
+      <div class="ticker-viewport">
+        <div id="ticker-track" class="ticker-track" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <main id="main" class="container" role="main">
+      <section id="markets" class="market-overview" aria-labelledby="market-overview-heading">
+        <div class="section-head">
+          <h2 id="market-overview-heading">Market overview</h2>
+          <p class="subtle">Major indices, live.</p>
+        </div>
+        <div class="indices-grid" id="indices-grid" role="region" aria-label="Major indices"></div>
+      </section>
+
+      <section class="two-col">
+        <div class="col">
+          <section class="top-movers" aria-labelledby="top-movers-heading">
+            <div class="section-head">
+              <h3 id="top-movers-heading">Top movers</h3>
+              <div class="table-actions">
+                <label class="visually-hidden" for="movers-search">Filter symbols</label>
+                <input id="movers-search" type="search" placeholder="Filter symbols..." />
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table id="movers-table">
+                <thead>
+                  <tr>
+                    <th data-key="symbol" scope="col" aria-sort="none">Symbol</th>
+                    <th data-key="name" scope="col" aria-sort="none">Name</th>
+                    <th data-key="price" scope="col" aria-sort="none" class="numeric">Price</th>
+                    <th data-key="change" scope="col" aria-sort="none" class="numeric">Change</th>
+                    <th data-key="percent" scope="col" aria-sort="none" class="numeric">%</th>
+                    <th scope="col" class="actions-col">Watch</th>
+                  </tr>
+                </thead>
+                <tbody id="movers-tbody"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+        <div class="col">
+          <section class="watchlist" aria-labelledby="watchlist-heading">
+            <div class="section-head">
+              <h3 id="watchlist-heading">Watchlist</h3>
+              <form id="watchlist-form" class="watchlist-form" autocomplete="off">
+                <label class="visually-hidden" for="watch-symbol">Add symbol</label>
+                <input id="watch-symbol" name="symbol" type="text" placeholder="Add symbol (e.g., AAPL)" pattern="[A-Za-z.\-]{1,10}" />
+                <button type="submit">Add</button>
+              </form>
+            </div>
+            <ul id="watchlist-items" class="watchlist-items" role="list"></ul>
+          </section>
+
+          <section id="news" class="news" aria-labelledby="news-heading">
+            <div class="section-head">
+              <h3 id="news-heading">Latest news</h3>
+            </div>
+            <ul id="news-list" class="news-list" role="list"></ul>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-inner">
+        <p>&copy; <span id="year"></span> Stock Exchange. For demonstration only.</p>
+        <nav aria-label="Footer">
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+          <a href="#">Contact</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="./script.js" defer></script>
+  </body>
+  </html>
 
